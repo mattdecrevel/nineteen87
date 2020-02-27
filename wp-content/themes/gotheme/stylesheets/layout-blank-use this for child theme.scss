@@ -1,0 +1,571 @@
+/*
+ * The site specific stylesheet
+ *
+ * @Author: goBRANDgo
+*/
+
+/* Table of Content
+==================================================
+	#Fonts and Colors
+	#Macros & Animations
+	#Site-Wide Styles
+    #Repeated Sections    
+    #Mobile Header					header.php          
+	#Desktop Header					header.php
+	#Footer							footer.php
+	#Homepage						template-home.php
+	#Default Page					page.php
+	#Blog Archive					home.php & archive.php
+	#Blog Single Post				single.php
+	#Media Queries
+	#IE Fixes
+*/
+	
+/*!  ^#Fonts and Colors *//*
+================================================== */
+$primary-font: sans-serif;
+$secondary-font: sans-serif;
+
+
+/* 	These colors are used for various styles throughout the site.
+	We can still define $color-name but update these colors as well to update the custom login and other styles
+*/
+
+$blue: #303a5b;
+$green: #66cb3f;
+
+$mobile-header-height: 80px;
+$desktop-header-height: 120px;
+
+/*! ^#Macros & Animations *//*
+================================================== */
+/* Centers div inside the most recent relatively\absolutely positioned parent element 
+	Must be used with position relative or absolute on the div to be centered.
+*/
+@mixin vert-center {
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+@mixin horiz-center {
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+@mixin center-both {
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+} 
+
+/* Transitions Elements */
+@mixin transition-me($elem, $duration, $effect: ease-in-out)  {
+	-webkit-transition: $elem $duration $effect;
+    -moz-transition: $elem $duration $effect;
+    -o-transition: $elem $duration $effect;
+    transition: $elem $duration $effect;
+} 
+
+/* Placeholder Colors */
+@mixin placeholderColor($color) {
+	::-webkit-input-placeholder { color: $color; }
+	:-moz-placeholder { color: $color; }
+	::-moz-placeholder { color: $color; }
+	:-ms-input-placeholder { color: $color; }
+}
+
+/* Header Adjustment */
+@mixin admin-header-fix( $offset: 0 ) {
+	$narrow-offset: 46px;
+	$wide-offset: 32px;
+	overflow: hidden;
+	
+	@if $offset != 0 and type-of($offset) == 'number' {
+    	$narrow-offset: $narrow-offset + $offset;
+		$wide-offset: $wide-offset + $offset;
+  	}
+  	
+  	.admin-bar & {
+    	top: $narrow-offset;
+		@media screen and (min-width: 783px) {
+			top: $wide-offset;
+    	}
+  	}
+}
+
+
+/*! ^#Site-Wide Styles *//*
+================================================== */
+
+html body { font-size: 18px; font-family: $primary-font; }
+
+.noPad { padding: 0px !important; }
+
+.hiddend {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	background: rebeccapurple;
+	top: 0;
+	height: 5px;
+}
+
+#gform_confirmation_wrapper_1 {
+	padding: 100px 0px;
+	text-align: center;
+}
+
+.scss_errors {
+	position: absolute;
+	z-index: 9999999999;
+}
+
+//Required Wordpress Tags
+.wp-caption,
+.wp-caption-text,
+.gallery-caption,
+.bypostauthor, {
+	font-size: 18px;
+	line-height: 20px;
+}
+
+.alignright { text-align: right; }
+.alignleft { text-align: left; }
+.aligncenter { text-align: center; }
+
+/*! -- ^#wys */
+.wys {
+	
+	blockquote {		
+		font-size: 40px;		
+		line-height: 45px;		
+		border: none;		
+		padding: 0px;
+				
+		p, h2 { 		
+			font-size: 40px;		
+			line-height: 45px;		
+			margin: 0px;		
+		}		
+	}		
+			
+	p, ul, li, ol, a, h1, h2, h3, h4, h5, h6 {		
+		font-family: $primary-font;		
+		margin-top: 0px;		
+				
+		&:last-child { margin-bottom: 0px; }		
+	}		
+			
+	p, ul, li, ol, a {		
+		font-size: 20px;		
+		line-height: 26px;		
+	}		
+			
+	p { margin-bottom: 24px; }
+	
+	h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+	
+	h1 {
+		font-size: 56px;
+		line-height: 60px;
+	}
+				
+	h2 {		
+		font-size: 49px;		
+		line-height: 54px;		
+	}		
+			
+	h3 {		
+		font-size: 32px;
+		line-height: 36px;		
+	}		
+			
+	h4 {		
+		font-size: 24px;		
+		line-height: 20px;		
+	}
+	
+	h5,
+	h6 {
+		font-size: 20px;
+		line-height: 26px;
+	}	
+	
+			
+	img { max-width: 100%; width: 100%; height: auto; }		
+			
+	ul:not(.gform_fields):not(.gfield_radio):not(.gfield_checkbox),
+	ol {		
+		padding-left: 36px;	
+	    		
+	    li { 		
+			font-size: 20px;
+			line-height: 24px;
+		}				
+			
+	}//ul		
+			
+	b {		
+		font-size: 24px;		
+		line-height: 26px;		
+		font-weight: 700;		
+	}
+	
+	a {
+		text-decoration: underline !important;
+	}
+	
+}
+
+/* ! ^#Repeated Sections *//*
+================================================== */
+
+/*! -- ^#Sticky Subheader */
+.subheader-wrap {
+	width: 100%;
+	position: relative;
+}
+.sticky-subheader {
+	width: 100%;
+	position: fixed;
+	left: 0;
+	top: $mobile-header-height;
+	z-index: 999;
+	
+	@include admin-header-fix($mobile-header-height);
+}
+
+/*! -- ^#Forms */
+$input-height: 49px;
+.default-form {
+	
+	select::-ms-expand {
+	    display: none !important;
+	}
+	
+	.gform_wrapper {
+		margin-top: 0px;
+		margin-bottom: 0px;
+		
+		//title and description
+		.gform_heading {
+			
+			h3 {
+				margin-top: 0px;
+			}
+			
+			.gform_description {
+
+			}
+			
+		}//gform_heading
+		
+		.gform_body { max-width: 100%; font-size: 0px; }
+		
+		.gform_body ul li.gfield {
+			margin-top: 0px;
+			padding-right: 0px;
+			position: relative;
+			
+			.ginput_container {
+				input[type=file] {
+					width: 100% !important;
+				    padding-top: 15px;
+				    padding-left: 60px !important;
+					-webkit-appearance: none !important;
+					-moz-appearance: none !important;
+					appearance:none !important;	
+					border-radius: 0px !important;
+					box-shadow: none !important;	
+				}
+				input[type=checkbox]  {
+					-webkit-appearance: checkbox !important;
+					-moz-appearance: checkbox !important;
+					appearance:checkbox !important;					
+				} 
+				input[type="radio"]  {
+					-webkit-appearance: radio !important;
+					-moz-appearance: radio !important;
+					appearance:radio !important;						
+				}
+			}
+			
+			//main labels
+			label {
+				
+				&.gfield_label_before_complex { display: none; }
+			}
+			
+			.ginput_container:not(.ginput_container_address) label { font-weight: normal; }
+			
+			//widths
+			span.ginput_left,
+			span.ginput_right { display: inline-block; vertical-align: top; }
+			
+			span.ginput_full { display: block; }
+			
+			//most inputs, textareas, and selects
+			.ginput_container,
+			span.ginput_full,
+			span.ginput_left,
+			span.ginput_right {
+				width: 100%;
+				margin-top: 0px;
+				margin-bottom: 17px;
+				position: relative;
+				
+				input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+				textarea,
+				select {
+					background: transparent;
+					outline: none !important;
+					width: 100%;
+					max-width: 100%;
+					margin-top: 0px;
+					-webkit-appearance: none !important;
+					-moz-appearance: none !important;
+					appearance:none !important;	
+					border-radius: 0px !important;
+					box-shadow: none !important;
+										
+					&:focus {
+						
+					}
+					
+				} //input, select, textarea
+				
+				input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) {
+					-webkit-appearance: none !important;
+					-moz-appearance: none !important;
+					appearance:none !important;	
+					border-radius: 0px !important;
+					box-shadow: none !important;					
+				}
+				
+				textarea { min-height: 164px !important; }
+				
+				select {
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					-ms-appearance: none;
+					-o-appearance: none;
+					border-radius: 0px;
+					height: $input-height;
+					padding-right: 59px !important;
+					position: relative;
+					z-index: 2;
+					margin-bottom: 0px;
+					-webkit-appearance: none !important;
+					-moz-appearance: none !important;
+					appearance:none !important;	
+					border-radius: 0px !important;
+					box-shadow: none !important;
+				}//select
+				
+				//select drop down
+				&.ginput_container_select:after,
+				&.ginput_container_address .address_country:after {
+					content: " ";
+					width: 59px;
+					height: $input-height;
+					position: absolute;
+					left: 100%;
+					bottom: 0;
+					//background-image: url('../../images/down-arrow-white.svg');
+					background-position: center center;
+					background-repeat: no-repeat;
+					z-index: 0;
+					-webkit-transform: translateX(-100%);
+					-moz-transform: translateX(-100%);
+					-ms-transform: translateX(-100%);
+					-o-transform: translateX(-100%);;
+					transform: translateX(-100%);
+					-webkit-appearance: none !important;
+					-moz-appearance: none !important;
+					appearance:none !important;	
+					border-radius: 0px !important;
+					box-shadow: none !important;	
+				}
+				
+				//Files
+				#extensions_message {
+
+				}
+				
+				input[type="file"] {
+					width: 5px;
+					height: 38px;
+					position: relative;
+					outline: none !important;
+					-webkit-appearance: none !important;
+					-moz-appearance: none !important;
+					appearance:none !important;	
+					border-radius: 0px !important;
+					box-shadow: none !important;					
+				}
+				
+				//radio and checkbox fields
+				input[type="radio"],
+				input[type="checkbox"] {
+				    margin-top: 0px;
+				}
+				
+				ul.gfield_radio,
+				ul.gfield_checkbox {
+					font-size: 0px;
+					
+					label {
+						margin-bottom: 0px;
+						font-size: 16px;
+					}
+					
+					li {
+						font-size: 16px;
+					}
+					
+				}//ul.gfield_radio
+				
+			}//ginput_container
+			
+			//more file field styling
+			label.file-label {
+				position: absolute;
+				z-index: 5;
+				width: 137px;
+				height: $input-height;
+				left: 12px;
+				top: 32px;
+				text-align: center;
+				cursor: pointer;
+			}//file-label
+			
+		}//gform_body -> ul li.
+		
+		//submit button
+		.gform_footer {
+			padding: 0px;
+			margin: 0px;
+			
+			input[type="submit"]:not([type=radio]):not([type=checkbox]):not([type=image]):not([type=file]) {
+				margin-bottom: 0px;
+				margin-top: 0px;
+				display: inline-block;
+				max-width: 100%;
+				width: auto;
+				-webkit-appearance: none !important;
+				-moz-appearance: none !important;
+				appearance:none !important;	
+				border-radius: 0px !important;
+				box-shadow: none !important;			
+			}
+			
+		}//gform_footer
+		
+	}//gform_wrapper
+	
+	.gform_wrapper ul.gfield_checkbox li input[type=checkbox]:checked+label, .gform_wrapper ul.gfield_radio li input[type=radio]:checked+label { font-weight: normal; }
+	
+}//default-form
+
+/* ! ^#Mobile Header *//*
+================================================== */
+.mobile-header-wrap {
+	width: 100%;
+	height: $mobile-header-height;
+	position: relative;
+}
+
+.mobile-header {
+	width: 100%;
+	height: $mobile-header-height;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	
+	@include admin-header-fix;
+}
+
+/* ! ^#Desktop Header *//*
+================================================== */
+.desktop-header-wrap {
+	width: 100%;
+	height: $desktop-header-height;
+	position: relative;
+}
+
+.desktop-header {
+	width: 100%;
+	height: $desktop-header-height;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	
+	@include admin-header-fix;
+}
+
+/* ! ^#Footer *//*
+================================================== */
+
+
+/* ! ^#Homepage *//*
+================================================== */
+
+/*! ^#Default Page *//*
+================================================== */
+
+/* ! ^#Blog Archive *//*
+================================================== */
+
+/*! ^#Blog Single Post *//*
+================================================== */
+
+/* ! --------^#Media Queries-------- *//*
+================================================== */
+
+    /*! ^#@Bootstrap xs *//*
+    All Mobile Sizes (devices and browser) */
+	@media (max-width: 767px) {}
+
+    /*! ^#@Bootstrap sm *//*
+    Tablet portrait and larger */
+	@media (min-width: 768px) {}
+
+    /*! ^#@Bootstrap md *//*
+    Larger than tablet portrait */
+	@media (min-width: 992px) {
+		
+		/*! -- ^#Repeated Section */
+		/*! -- -- Sticky Subheader */
+		.sticky-subheader {
+			top: $desktop-header-height;
+			@include admin-header-fix($desktop-header-height);
+		}
+		
+	}//bootstrap Md   
+
+	/*! ^#@Bootstrap lg *//* 
+    Tablet Landscape and Standard browsers */
+	@media (min-width: 1200px) {}
+
+
+/* ! --------^#IE fixes-------- *//*
+================================================== */	
+	/*! ^#IE fixes */
+	
+	/* Internet Explorer 9+ */
+	@media screen\0 {
+
+	}
+	/* Internet Explorer 10+ */
+    _:-ms-lang(x) {
+		
+	}
+

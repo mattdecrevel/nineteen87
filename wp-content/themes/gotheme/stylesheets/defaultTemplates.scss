@@ -1,0 +1,326 @@
+/*
+ *
+ * These are the stylings for our default templates
+ *
+ * Author: goBRANDgo
+ * January 2015
+ *
+ */
+ 
+ /* Table of Contents
+==================================================
+	#Brand Asset Page			template-brandLogo.php
+	#Search Results Page		search.php
+	#404 Page					404.php
+	#searchForm Search & 404 page
+	#Accordians					js/accordian-sc && functions.php
+	#Thank You Page				template-thankYou.php
+*/
+	
+ /*! ^#Brand Asset Page *//*
+================================================== */
+.brand-logo-page {
+	font-family: 'Open Sans', 'Open-Sans';
+	color: #333;
+	padding-bottom: 200px;
+	
+	.header-title {
+		font-size: 28px;
+		line-height: 34px;
+		width: 27%;
+		margin: 25px 0px;
+	}
+	.brand-header-wrapper {
+		width: 100%;
+		border-top: 1px solid #acacac;
+		border-bottom: 1px solid #acacac;
+		font-size: 18px;
+		
+		.brand-header { 
+			width: 92%; 
+			margin-top: 15px;
+			margin-bottom: 10px;
+			
+			a {
+				color: #333 !important;
+			}
+		}
+	}//brand-header-wrapper
+	
+	.logo-rules {
+		font-size: 14px;
+		margin-top: 15px;
+		margin-bottom: 55px;
+	}
+	
+	.font-rule-wrapper {
+		width: 92%;
+		
+		.font-rule-header {
+			margin-top: 15px;
+			margin-bottom: 10px;
+			font-size: 18px;
+			border-bottom: 1px solid #acacac;
+		}
+		.font-rules {
+			font-size: 14px;
+			margin-top: 15px;
+			margin-bottom: 55px;
+		}
+	}//font-rule-wrapper
+	
+	.logo-row {
+		height: 150px;
+		position: relative;
+		margin-bottom: 60px;
+		font-size: 0px;
+		
+		.img-wrapper { height: 100%; }
+		
+		.img-wrapper, 
+		.download-links-wrapper 
+		{
+			width: 50%;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		.download-links-wrapper {
+			
+			.download-label {
+				font-size: 14px;
+				line-height: 24px;
+			}
+			.download-links a {
+				font-size: 14px;
+				text-decoration: none;
+				color: #2395b1 !important;
+			}
+		}//download-links-wrapper
+	}//logo-row
+	
+	.colors-header, .brand-guide-header {
+		width: 100%;
+		font-size: 20px;
+		line-height: 34px;
+		border-bottom: 1px solid #acacac;
+		padding-bottom: 10px;
+	}
+	
+	.colors-subheader {
+		font-size: 14px;
+		margin-top: 20px;
+	}
+	
+	.colors-content {
+		margin-top: 40px;
+		
+		.color-section {
+			width: 100%;
+			font-size: 0px;
+			height: 146px;
+			position:relative;
+			
+			.color-bar {
+				height: 146px;
+				width: 25px;
+				display: inline-block;
+				vertical-align: middle;
+			}
+			
+			.color-section-content {
+				display: inline-block;
+				vertical-align: middle;
+				padding-left: 20px;
+						
+				.color-label {
+					font-size: 14px;
+					font-weight: bold;
+					text-transform: uppercase;
+					margin-top: -10px;
+					padding-bottom: 10px;
+				}
+				
+				.color-info {
+					line-height: 25px;
+					font-size: 14px;
+				}
+			}//color-section-content
+
+		}//color-section
+	}//color-content
+	
+	.brand-guide-header {
+		//same styling as color header
+		margin-top: 80px;
+	}
+	
+	.brand-guide-link {
+		display: block;
+		margin-top: 30px;
+		width: 240px;
+		height: 67px;
+		background: #333;
+		color: #fff !important;
+		text-decoration: none;
+		font-size: 20px;
+		line-height: 67px;
+		text-align: center;
+		font-weight: bold;
+	}//brand-guide-link
+}//brand-logo-page
+
+ /*! ^#Search Results Page *//*
+================================================== */
+.searchPage {
+	padding-bottom: 150px; 
+	padding-top: 50px;
+	
+	.page-title { 
+		text-align: center; 
+		font-size: 2.5em;
+	}
+	
+	.singleResult { 
+		border-bottom: 1px solid #444444; 
+		margin-bottom: 20px;
+		
+		.resultTitle { line-height: 41px; }
+		
+		.resExcerpt {
+			color: #444444;
+			padding-bottom: 20px;
+		}
+	}//singleResult
+	
+}//searchPage
+
+ /*! ^#404 Page *//*
+================================================== */
+.errorPage {
+	position: relative;
+	width: 100%;
+	height: 972px;
+	padding-top: 50px;
+	
+	.errorPageTitle {
+		text-align: center;
+		color: #fff;
+		font-size: 4em;
+		margin-bottom: 50px;
+	}
+	
+	.page-content {
+		width: 90%;
+		margin: 0 auto;
+		text-align: center;
+		
+		.errorText {
+			color: #fff;
+			font-size: 1.11em;
+			font-weight: bold;
+			margin-bottom: 42px;
+			
+			a { 
+				color: #fff !important; 
+				text-decoration: underline !important;
+			}
+		}//errorText
+	}//page-content
+}//error Page
+
+/* Bootstrap md, Larger than tablet portrait */
+@media (min-width: 992px) {
+	.errorPage { padding-top: 100px; }
+	.errorPage .page-content { width: 30%;}
+}
+
+ /*! ^#SearchForm Search & 404 Page *//*
+================================================== */
+.searchPage form, 
+.errorPage	form {
+	margin-top: 30px;
+	text-align: center;
+	
+	.screen-reader-text,
+	input[type="submit"] {
+		display: none;
+	}
+	
+	input[type="search"] {
+		width: 432px;
+		max-width: 90%;
+		height: 60px;
+		border: none;
+		border-radius: 10px;
+		box-shadow: none;
+		padding: 0px 15px;
+		background: #e4e5e7; 
+		background-image: url('../images/search.svg');
+		background-size: 27px;
+		background-repeat: no-repeat;
+		background-position: 95% center;
+		font-size: 18px;
+		color: #6d6e70;
+		margin-bottom: 65px;
+	}//input[type=search]
+	
+	::-webkit-input-placeholder { color: #6d6e70; }
+	:-moz-placeholder { color: #6d6e70; }
+	::-moz-placeholder { color: #6d6e70; }
+	:-ms-input-placeholder { color: #6d6e70; }
+
+}//form
+
+
+/*! ^#Accordians *//*
+================================================== */
+
+.gBg_accordian {
+
+    &.opened {
+        .gbg_accordian_title {
+            background-image: url('../images/cc_accordian_img.png');
+        }
+    }
+    
+    .gbg_accordian_title {
+        background-image: url('../images/cc_accordian_img2.png');
+        background-repeat: no-repeat;
+        cursor: pointer;
+        //transition: all 0.2s ease-in-out;
+        padding-left: 35px;
+    } /* accordian title */
+    
+    .gbg_accordian-content { 
+        padding-bottom: 15px;
+        display: none;
+    }
+    
+    .gbg_accordian-content::before {
+        content: none !important;
+    }
+        
+} /* gBg_accordian */
+
+/*! ^#Thank You Page *//*
+================================================== */
+.thankYouPageWrap {
+	min-height: 600px;
+	padding: 190px 0px;
+	text-align: center;
+	color: #fff;
+	
+	.title {
+		font-size: 60px;
+	    line-height: 60px;
+	    font-weight: bold;
+	}
+	
+	.subtitle {
+		padding-top: 45px;
+		font-size: 26px;
+		line-height: 33px;
+	}
+	
+}//thankYouPageWrap

@@ -1,0 +1,52 @@
+body #adminmenu li.wp-menu-separator { margin: 0px; }
+
+body #adminmenu div.separator {
+    height: 1px;
+    background: #fff;
+}
+
+#adminmenu li.wp-menu-separator { height: 1px; }
+
+#wpadminbar .quicklinks .ab-empty-item, #wpadminbar .quicklinks a, #wpadminbar .shortlink-input {
+    padding: 0;
+}
+
+#adminmenu,
+#adminmenu .wp-submenu,
+#adminmenuback,
+#adminmenuwrap {
+    background-color: #031329;
+    font-family: "verdana", sans-serif;
+}
+
+#adminmenu li.menu-top:hover,
+#adminmenu li.opensub>a.menu-top,
+#adminmenu li>a.menu-top:focus {
+    background-color: #083767;
+    color: #bfdcfb;
+}
+#adminmenu .wp-submenu a:focus,
+#adminmenu .wp-submenu a:hover,
+#adminmenu a:hover,
+#adminmenu li.menu-top>a:focus {
+    color: #bfdcfb;
+}
+
+#adminmenu li a:focus div.wp-menu-image:before,
+#adminmenu li.opensub div.wp-menu-image:before,
+#adminmenu li:hover div.wp-menu-image:before {
+    color: #bfdcfb;
+}
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+#adminmenu .wp-menu-arrow,
+#adminmenu .wp-menu-arrow div, 
+#adminmenu li.current a.menu-top,
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu, 
+.folded #adminmenu li.current.menu-top, 
+.folded #adminmenu li.wp-has-current-submenu {
+    background: #083767;
+    color: #fff;
+}
+
+
+#adminmenu .toplevel_page_go-settings .wp-menu-image img { padding-top: 0px; }
